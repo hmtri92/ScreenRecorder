@@ -34,12 +34,14 @@ import javax.swing.border.EmptyBorder;
 public class SelectionRectangle {
 
 	public static void main(String[] args) {
-		new SelectionRectangle();
+//		new SelectionRectangle();
 	}
 	
 	JFrame frmSelection;
+	RecorderPane recorderPane;
 
-	public SelectionRectangle() {
+	public SelectionRectangle(RecorderPane recorderPane) {
+		this.recorderPane = recorderPane;
 		EventQueue.invokeLater(new Runnable() {
 
 			@Override
@@ -175,18 +177,23 @@ public class SelectionRectangle {
 			btnOk.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					SwingUtilities.getWindowAncestor(SelectionPane.this)
-							.dispose();
+					btnOk_Click (e);
 				}
 			});
 
 			addComponentListener(new ComponentAdapter() {
 				@Override
 				public void componentResized(ComponentEvent e) {
-					lblRectangle.setText("Rectangle " + getX() + "x" + getY()
-							+ "x" + getWidth() + "x" + getHeight());
+					lblRectangle.setText("Rectangle " + getX() + "x" + getY() + "x" + getWidth() + "x" + getHeight());
 				}
 			});
+		}
+		
+		private void btnOk_Click (ActionEvent e) {
+			Rectangle bound = new Rectangle(getX(), getY(), getWidth(), getHeight());
+			SwingUtilities.getWindowAncestor(SelectionPane.this).dispose();
+			recorderPane.record(bound);
+			recorderPane.show(true);
 		}
 
 		@Override
