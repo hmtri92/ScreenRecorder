@@ -24,6 +24,7 @@ public class FrameFactory {
 	public static final int MODE_RECORD = 11;
 	
 	public static int mode = 0;
+	public static Rectangle selectionBound;
 	
 	static JFrame frmMain;
 	static JFrame frmSelection;

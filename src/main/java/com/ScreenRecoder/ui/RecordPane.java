@@ -8,13 +8,9 @@ import java.io.IOException;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-import com.ScreenRecoder.Recorder;
-
 public class RecordPane extends JPanel {
 
 	private static final long serialVersionUID = -6768506709101708268L;
-	private Recorder recorder;
-	private int status = 0;
 	
 	private JButton btnStart;
 	private JButton btnPause;

@@ -70,7 +70,7 @@ public class SelectionPane extends JPanel {
 	}
 	
 	private void btnOk_Click (ActionEvent e) {
-		Recorder.selectionBound = new Rectangle(getX(), getY(), getWidth(), getHeight());
+		FrameFactory.selectionBound = new Rectangle(getX(), getY(), getWidth(), getHeight());
 		FrameFactory.getFrame(FrameFactory.FRAME_SELECT_RECTANGLE).dispose();
 		
 		switch (FrameFactory.mode) {
@@ -101,7 +101,8 @@ public class SelectionPane extends JPanel {
 	}
 	
 	private void takeScreen() {
-		Recorder.takeScreenShot();
+		Recorder recorder = new Recorder();
+		recorder.takeScreenShot();
 	}
 	
 	private void record() {
